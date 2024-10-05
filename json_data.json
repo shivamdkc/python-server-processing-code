@@ -1,0 +1,130 @@
+{
+    "orderDate": "2024-09-03",
+    "shipDate": "2024-10-31",
+    "machinesAvailable": "12",
+    "china_fabric_present": "Yes",
+    "china_fabric_list":["CHINA LACE"],
+    "fabricDetails": [
+        {
+            "name": "WINDOWPANE GAUZ",
+            "usage": {
+                "value": "1",
+                "unit": "meter"
+            },
+            "processes": [
+                "DYING"
+            ],
+            "colors": [
+                {
+                    "name": "Red",
+                    "quantity": "3000"
+                },
+                {
+                    "name": "Blue",
+                    "quantity": "4000"
+                },
+                {
+                    "name": "Green",
+                    "quantity": "2000"
+                },
+                {
+                    "name": "White",
+                    "quantity": "3000"
+                }
+            ]
+        },
+        {
+            "name": "CHINA LACE",
+            "usage": {
+                "value": "0.32",
+                "unit": "meter"
+            },
+            "processes": [
+                "DYING"
+            ],
+            "colors": [
+                {
+                    "name": "Red",
+                    "quantity": "3000"
+                },
+                {
+                    "name": "Blue",
+                    "quantity": "4000"
+                },
+                {
+                    "name": "Green",
+                    "quantity": "2000"
+                },
+                {
+                    "name": "White",
+                    "quantity": "3000"
+                }
+            ]
+        },
+        {
+            "name": "FP001",
+            "usage": {
+                "value": "0.5",
+                "unit": "meter"
+            },
+            "processes": [
+                "DYING",
+                "SHIFFLY"
+            ],
+            "colors": [
+                {
+                    "name": "Red",
+                    "quantity": "3000"
+                },
+                {
+                    "name": "Blue",
+                    "quantity": "4000"
+                },
+                {
+                    "name": "Green",
+                    "quantity": "2000"
+                },
+                {
+                    "name": "White",
+                    "quantity": "3000"
+                }
+            ]
+        }
+    ],
+    "accessories": [
+        {
+            "name": "Button",
+            "id": 1726139455693
+        },
+        {
+            "name": "Zipper",
+            "id": 1726139646344
+        },
+        {
+            "name": "Hook",
+            "id": 1726139648212
+        },
+        {
+            "name": "Elastic",
+            "id": 1726139650762
+        }
+    ],
+    "trims": [
+        {
+            "name": "Label",
+            "id": 1726139455693
+        },
+        {
+            "name": "Tag",
+            "id": 1726139657824
+        },
+        {
+            "name": "Wash Care",
+            "id": 1726139660580
+        }
+    ],
+    "garments": {
+        "TOP": ["CHINA LACE"],
+        "SKIRT": ["FP001", "WINDOWPANE GAUZ"]
+    }
+}
