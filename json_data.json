@@ -4,6 +4,7 @@
     "machinesAvailable": "12",
     "china_fabric_present": "Yes",
     "china_fabric_list":["CHINA LACE"],
+    "major_fabric":"CHINA LACE",
     "fabricDetails": [
         {
             "name": "WINDOWPANE GAUZ",
