@@ -84,6 +84,10 @@ def dying_handler_for_submission_stage (fabric_name:str,color_quantity:dict,stag
     total_order_quantity = total_quantity_calculator(color_quantity)
     days_needed_for_dying = get_submission_days("Dying")
     end_date = end_date_calculator(start_date,days_needed_for_dying)
-
     
+    
+
+
+
+        
 
