@@ -2,22 +2,22 @@ def is_multiple_fabric(all_fabric_details_list:list[dict]) -> bool:
     return True if len(all_fabric_details_list) >1 else False
 
 
-def mockup_data_annotation(fabric_name:str,stage:str) -> str:
-    starting_text = "Mockup"
-    return f"Stage: {stage} , {starting_text} of {fabric_name}"
-
-def dying_data_annotation(fabric_name:str,stage:str,color:str)->str:
-    starting_text = "Dying"
-    return f"Stage: {stage} , {starting_text} of {fabric_name} , Color: {color}"
-
-def printing_data_annotation(fabric_name:str,stage:str,printing_technique:str)->str:
+def description_annotator(process:str,fabric_name:str,stage:str,color_print_params:str=None)->str:
+    if process == "Mockup":
+        starting_text = "Mockup"
+        return f"Stage: {stage} , {starting_text} of {fabric_name}"
+    
+    if process == "Dying":
+        starting_text = "Dying"
+        return f"Stage: {stage} , {starting_text} of {fabric_name} , Color: {color_print_params}"
+    
     starting_text = "Strike Off"
-    return f"Stage: {stage} , {starting_text} of {fabric_name} , Printing Technique: {printing_technique}"
-
+    return f"Stage: {stage} , {starting_text} of {fabric_name} , Printing Technique: {color_print_params}"
+                 
 
 def color_wise_dying_processor(fabric_name:str,colors:list,stage:str):
     for color in colors:
-        dying_data_annotation(fabric_name,stage,color)
+        dying_data_annotation(fabric_name,stage,color) #Till now no use of this function.
 
 
 def end_date_calculator(start_date, number_of_days):
@@ -42,18 +42,6 @@ def end_date_calculator(start_date, number_of_days):
     
 
 
-        df_workflow_tracker = add_to_dataframe(
-            df_workflow_tracker,
-            stage="Submission",
-            fabric_name=fabric,
-            process="SHIFFLY",
-            description=f"SHIFFLY process for {fabric}",
-            quantity=total_fabric_quantity,
-            color="null",
-            start_date=start_date_china_shiffly,
-            lowest_days=lowest_days_needed,
-            end_date=end_date_china_shiffly
-        ) 
     
 
 def total_quantity_calculator(quantity_dict: dict) -> int:
@@ -79,13 +67,52 @@ def get_submission_days(process:str) ->int: # This function will return the subm
     process_data =  df_submission_days_supporter[df_submission_days_supporter['Process'] == process]
     return int(process_data["Minimum days"].iloc[0])
 
-def dying_handler_for_submission_stage (fabric_name:str,color_quantity:dict,stage:str,start_date:datetime):
 
-    total_order_quantity = total_quantity_calculator(color_quantity)
-    days_needed_for_dying = get_submission_days("Dying")
-    end_date = end_date_calculator(start_date,days_needed_for_dying)
+
+def dying_printing_handler_for_submission_stage(fabric_name:str,color_print_quantity_params:dict,stage:str,start_date:datetime,process:str):
+
+    total_order_quantity = total_quantity_calculator(color_print_quantity_params)
+
+    lowest_days_needed = get_submission_days(process)
+    end_date = end_date_calculator(start_date,lowest_days_needed)
+
+    for color_print,c_quantity in color_print_quantity_params.items():
+        df_workflow_tracker = add_to_dataframe(
+                df_workflow_tracker,
+                stage=stage,
+                fabric_name=fabric_name,
+                process=process,
+                description=description_annotator(fabric_name=fabric_name,stage=stage,color_print_params=color_print,process=process),
+                quantity=c_quantity,
+                color=color_print,
+                start_date=start_date,
+                lowest_days=lowest_days_needed,
+                end_date=end_date)
+        
+def mockup_handler_for_submission_stage(fabric_name:str,color_print_quantity_params:dict,stage:str,start_date:datetime,process:str)-> None:
+
     
-    
+    total_order_quantity = total_quantity_calculator(color_print_quantity_params)
+
+    lowest_days_needed = get_submission_days(process)
+    end_date = end_date_calculator(start_date,lowest_days_needed)
+
+    for color_print,c_quantity in color_print_quantity_params.items():
+        df_workflow_tracker = add_to_dataframe(
+                df_workflow_tracker,
+                stage=stage,
+                fabric_name=fabric_name,
+                process=process,
+                description=description_annotator(fabric_name=fabric_name,stage=stage,color_print_params=color_print,process=process),
+                quantity=c_quantity,
+                color=color_print,
+                start_date=start_date,
+                lowest_days=lowest_days_needed,
+                end_date=end_date)    
+
+
+
+
 
 
 
